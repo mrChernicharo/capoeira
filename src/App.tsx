@@ -1,29 +1,17 @@
-import React, { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Box } from "@react-three/drei";
-import "./index.css";
+import React from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import Abe from "./CapoeiraAbe";
 
-const Scene = () => {
-  const scene = useRef<any>();
-  useFrame(() => {
-    scene.current.rotation.y += 0.01;
-    scene.current.rotation.x += 0.01;
-    scene.current.rotation.z += 0.01;
-  });
-  return (
-    <group ref={scene}>
-      <Box>
-        <meshLambertMaterial attach="material" color="white" />
-      </Box>
-    </group>
-  );
-};
+import "./index.css";
 
 export default function App() {
   return (
     <Canvas>
-      <directionalLight intensity={0.2} />
-      <Scene />
+      <OrbitControls />
+      <directionalLight intensity={2.5} />
+      <ambientLight intensity={1.2} />
+      <Abe />
     </Canvas>
   );
 }
