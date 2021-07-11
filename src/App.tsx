@@ -1,9 +1,10 @@
 import React, { Suspense } from "react";
 import { Canvas, Vector3 } from "@react-three/fiber";
-import { OrbitControls, Box, Environment } from "@react-three/drei";
+import { OrbitControls, Box, Plane } from "@react-three/drei";
 import Abe from "./CapoeiraAbe";
 
 import "./index.css";
+import { Color } from "three";
 
 export default function App() {
   const vec: Vector3 = [1, 0.1, 2];
@@ -18,7 +19,8 @@ export default function App() {
         <ambientLight intensity={1.2} />
         <Suspense fallback={"...Loading"}>
           <Abe />
-          <Box scale={0.2} position={vec} />
+          <Box scale={0.4} position={vec} />
+          <Plane rotation={[-Math.PI / 2, 0, 0]} scale={100} />
         </Suspense>
       </Canvas>
     </>
